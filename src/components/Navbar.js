@@ -8,6 +8,9 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import cwLogo from "../assets/cw.jpeg";
+import { useAuth} from "../context/AuthContextProvider";
+import { Link, useHistory} from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
   logo :{
     width:40,
   },
+  
+  linkStyle : {
+    textDecoration: "none",
+    color :"black",
+  }
 
 }));
 
@@ -43,6 +51,8 @@ export default function Navbar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const { currentUser} = useAuth();
 
   
 
@@ -81,6 +91,8 @@ export default function Navbar() {
               >
                 <AccountCircle style={{fontSize:"40px"}}/>
               </IconButton>
+
+              {currentUser?.email? (null):(
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -96,9 +108,15 @@ export default function Navbar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
+
+              <Link to="/login" className={classes.linkStyle}>
+                <MenuItem onClick={handleClose}>Login</MenuItem>
+              </Link>
+              <Link to="/register" className={classes.linkStyle}>
+                <MenuItem onClick={handleClose}>Register</MenuItem>
+              </Link>
+              </Menu>)}
+              
             </div>
           
         </Toolbar>
