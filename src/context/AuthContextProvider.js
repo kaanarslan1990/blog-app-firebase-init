@@ -10,16 +10,16 @@ export function useAuth() {
 }
 
 const AuthContextProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState();
-    const [loading, setLoading] = useState(true);
+  const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
+  
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            setCurrentUser(user);
-            setLoading(false);
-        });
-        return unsubscribe;
-        
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        setCurrentUser(user);
+        setLoading(false);
+      });
+      return unsubscribe;
     }, []);
     
   function signup(email, password) {
