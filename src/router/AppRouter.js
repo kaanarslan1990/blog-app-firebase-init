@@ -22,8 +22,8 @@ const AppRouter = () => {
 
         <PrivateRouter path="/profile" component={Profile} />
         <PrivateRouter path="/new-blog" component={NewBlog} />
-        <PrivateRouter path="/update-blog" component={UpdateBlog} />
-        <PrivateRouter path="/detail" component={Detail} />
+        <PrivateRouter path="/update-blog/:id" component={UpdateBlog} />
+        <PrivateRouter path="/detail/:id" component={Detail} />
       </Switch>
     </Router>
   );

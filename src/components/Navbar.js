@@ -96,7 +96,7 @@ export default function Navbar() {
           <div className={classes.root}>
             <Link to="/" className={classes.login}>
               <Typography variant="h6" className={classes.title}>
-                ──── <span>{"<Khan IT />"}</span> BLOG ────
+                ──── <span>{"<Khan ACADEMY />"}</span> BLOG ────
               </Typography>
             </Link>
           </div>
